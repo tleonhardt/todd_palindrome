@@ -1,21 +1,29 @@
 require "todd_palindrome/version"
 
-class String
+module ToddPalindrome
 
   # Returns true for a palindrome, false otherwise.
   def palindrome?
     processed_content == processed_content.reverse
   end
 
-  # Returns the letters in the string.
-  def letters
-    self.scan(/\w/).join
+  # Returns the letters and digits in the string.
+  def letters_and_digits
+    self.to_s.scan(/\w/).join
   end
 
   private
 
     # Returns content for palindrome testing.
     def processed_content
-      letters.downcase
+      letters_and_digits.downcase
     end
+end
+
+class String
+  include ToddPalindrome
+end
+
+class Integer
+  include ToddPalindrome
 end
