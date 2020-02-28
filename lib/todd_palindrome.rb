@@ -7,10 +7,15 @@ class String
     processed_content == processed_content.reverse
   end
 
+  # Returns the letters in the string.
+  def letters
+    self.scan(/\w/).join
+  end
+
   private
 
     # Returns content for palindrome testing.
     def processed_content
-      self.downcase
+      letters.downcase
     end
 end
